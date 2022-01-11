@@ -17,4 +17,8 @@ RUN sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master
 # Configure zsh
 COPY zshrc /home/workstation/.zshrc
 
+# Configure vim
+RUN git clone --depth=1 https://github.com/amix/vimrc.git /home/workstation/.vim_runtime
+RUN sh /home/workstation/.vim_runtime/install_awesome_vimrc.sh
+
 ENTRYPOINT [ "/bin/zsh" ]
